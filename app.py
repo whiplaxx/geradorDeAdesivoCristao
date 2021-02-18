@@ -14,7 +14,6 @@ PHRASES_PATH = 'phrases.txt'
 
 # VARIABLES
 BORDER_SIZE_DEFAULT = (40,20,40,20)
-FONT_SIZE = 50
 ADESIVO_WIDTH = 300
 STROKE_WIDTH = 5
 STROKE_FILL = (0,0,0)
@@ -38,8 +37,8 @@ if __name__ == "__main__":
 	# Randomizing elements
 	figure = Image.open( FIGURES_PATH + choice(ls_figuresNames) )
 	frame = Image.open( FRAMES_PATH + choice(ls_framesNames) )
-	font = ImageFont.truetype( FONTS_PATH + choice(ls_fontsNames), FONT_SIZE)
-	fontColor = (randint(150, 200), randint(150, 200), randint(150, 200))
+	font = ImageFont.truetype( FONTS_PATH + choice(ls_fontsNames), int(ADESIVO_WIDTH/8))
+	fontColor = (randint(150, 255), randint(150, 255), randint(150, 255))
 	phrase = choice(ls_phrases)
 
 	# Adding border
