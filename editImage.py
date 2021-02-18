@@ -1,6 +1,6 @@
 #!/bin/env python3.7
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 def resizeProp_width( image, newWidth ):
 	width = image.size[0]
@@ -58,8 +58,19 @@ def createBorder( image, bordersSize, colorRgb=(255,255,255)):
 	return newImage
 
 
-
-
-
-
+def fitText(width, text, font):
+	
+	draw = ImageDraw.Draw( Image.new('RGB', (1,1)) )
+	
+	textWords = text.replace('\n','').split(' ')
+	
+	text = ""
+	for word in textWords:
+		textSize = draw.multiline_textsize( text+word, font=font)
+		if textSize[0] < width:
+			text += word + ' '
+		else:
+			text += '\n' + word + ' '
+	
+	return text
 

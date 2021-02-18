@@ -56,8 +56,9 @@ if __name__ == "__main__":
 
 	# Adding text
 	draw = ImageDraw.Draw(adesivo)
+	phrase = editImage.fitText( (adesivo.size[0]*0.8), phrase, font)
 	textSize = draw.multiline_textsize(phrase, font=font, stroke_width=STROKE_WIDTH)
-	textPositionTuple = ( int((adesivo.size[0]-textSize[0])/2), int(adesivo.size[1]/5)*3 )
+	textPositionTuple = ( int((adesivo.size[0]-textSize[0])/2), adesivo.size[1]-textSize[1])
 	draw.multiline_text( textPositionTuple, phrase, font=font, fill=fontColor, align='center', stroke_width=STROKE_WIDTH, stroke_fill=STROKE_FILL)
 
 	adesivo.save('adesivo.png')
